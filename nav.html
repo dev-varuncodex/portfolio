@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation bar</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <style>
+        .containernav{
+            display: flex;
+            justify-content: space-between;
+            background-color: #40aa40;
+        }
+        #portfolio{
+            padding: 15px;
+            font-family: fantasy;
+            color: #054605;
+            font-size: 50px;
+        }
+        #portfolioul{
+            list-style-type: none;
+            display: flex;
+            justify-content: space-evenly;
+            padding: 15px;
+            font-size: 18px;
+        }
+        #portfolioil{
+            padding: 10px;
+        }
+        #portfolioil:hover{
+            background-color: #054605;
+            color: #40aa40;
+        }
+    </style>
+</head>
+<body>
+    <div class="containernav">
+        <div id="portfolio">
+            PORTFOLIO
+        </div>
+        <div>
+            <ul id="portfolioul">
+                <li id="portfolioil"><a href="index.html">Home</a></li>
+                <li id="portfolioil"><a href="education.html">Education</a></li>
+                <li id="portfolioil">Study Path</li>
+                <li id="portfolioil"><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
