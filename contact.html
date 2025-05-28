@@ -63,6 +63,85 @@
             color: #000000;
             font-size: 25px;
         }
+
+        .contact-form {
+        max-width: 400px;
+        margin-top: 700px;
+        margin: auto;
+        background: black;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-form h2 {
+        margin-bottom: 20px;
+        font-size: 28px;
+        color: white;
+        }
+
+        .contact-form .form-group {
+        margin-bottom: 15px;
+        }
+
+        .contact-form label {
+        display: block;
+        margin-bottom: 5px;
+        color: white;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        padding-right: 0px;
+        border: 1px solid #ccc;
+        /* border-radius: 8px; */
+        font-size: 16px;
+        }
+        .contact-form textarea:hover{
+            background-color: black;
+            color: white;
+            transform: scale(1);
+        }
+        .contact-form input:hover{
+            background-color: black;
+            color: white;
+            transform: scale(1);
+        }
+
+        .contact-form textarea {
+        resize: vertical;
+        height: 120px;
+        font-family: ;
+        }
+
+        .contact-form button {
+        padding: 10px 20px;
+        background: white;
+        color: black;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        }
+
+        .contact-form button:hover {
+        background: black;
+        color: white;
+        }
+
+        .contact-form .error {
+        color: red;
+        margin-top: 5px;
+        font-size: 14px;
+        }
+
+        .contact-form .success {
+        color: green;
+        margin-top: 10px;
+        font-size: 16px;
+        }
+        
     </style>
 </head>
 <body>
@@ -70,9 +149,6 @@
     <nav class="navbar navbar-expand-lg customnavbar">
         <div class="container-fluid">
           <div class="portfolio" >PORTFOLIO</div>
-          <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button> -->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -87,9 +163,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact</a>
               </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li> -->
             </ul>
             </div>
         </div>
@@ -119,6 +192,72 @@
             </div>
         </div>
     </div>
+    <br><br>
 
+    <div class="contact-form">
+    <h2>Contact Me</h2>
+    <form id="form">
+      <div class="form-group">
+        <label for="name">Name *</label>
+        <input type="text" id="name" />
+        <div class="error" id="nameError"></div></div>
+
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" />
+        <div class="error" id="emailError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message"></textarea>
+        <div class="error" id="messageError"></div>
+      </div>
+
+      <button type="submit">Send Message</button>
+      <div class="success" id="successMessage"></div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("form");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      document.querySelectorAll(".error").forEach(el => el.textContent = "");
+      document.getElementById("successMessage").textContent = "";
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      let valid = true;
+
+      if (name === "") {
+        document.getElementById("nameError").textContent = "Please enter your name.";
+        valid = false;
+      }
+
+      if (email === "") {
+        document.getElementById("emailError").textContent = "Please enter your email.";
+        valid = false;
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
+        document.getElementById("emailError").textContent = "Email is invalid.";
+        valid = false;
+      }
+
+      if (message === "") {
+        document.getElementById("messageError").textContent = "Please enter a message.";
+        valid = false;
+      }
+
+      if (valid) {
+        document.getElementById("successMessage").textContent = "Thanks! Your message has been sent.";
+        form.reset();
+      }
+    });
+  </script>
+  <br><br><br>
 </body>
 </html>
